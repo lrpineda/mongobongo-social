@@ -1,0 +1,24 @@
+{
+  "name": "mongobongo-social",
+  "version": "1.0.0",
+  "description": "This is using mongoDB to create the db for a social media website",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lrpineda/mongobongo-social.git"
+  },
+  "author": "Luis Pineda",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lrpineda/mongobongo-social/issues"
+  },
+  "homepage": "https://github.com/lrpineda/mongobongo-social#readme",
+  "dependencies": {
+    "express": "^4.18.1",
+    "mongoose": "^6.5.0"
+  }
+}
