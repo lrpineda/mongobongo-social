@@ -43,14 +43,10 @@ const userController = {
 
     deleteUser({ params }, res){
         User.findOneAndDelete({ _id: params.id })
-            .then(({ _id }) => {
-                return Thought.deleteMany({ username: _id });
-            })
-            .then(dbUserData => {
-                if(!dbUserData) {
-                    res.status(404).json({ message: 'User not found' });
-                }
-                res.json(dbUserData);
+            .then(async ({ _id }) => {
+                await Thought.deleteMany({ username: _id });
+                await User.updateMany({ friends: _id }, { $pull: { friends: _id } });
+                res.json({ message: 'User and associated thoughts deleted, as well as removed user from other users friends list ' });
             })
             .catch(err => res.status(400).json(err));
     },
@@ -81,7 +77,7 @@ const userController = {
                 res.json(dbUserData);
             })
             .catch(err => res.status(400).json(err));
-
+        
     }
         
 };
